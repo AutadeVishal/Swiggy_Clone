@@ -12,7 +12,6 @@ const useListofRestaurants = () => {
   const fetchData = async () => {
     const data = await fetch("http://localhost:5000/api/restaurants");
     const json = await data.json();
-    console.log("Fetched Restaurant Data");
     setListofRestaurants(json);
     setFilteredRestaurants(json); // Initialize with full list
   };

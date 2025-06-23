@@ -6,12 +6,10 @@ const useOnlineStatus=()=>{
 const [onlineStatus,setOnlineStatus]=useState(true);
 
     useEffect(()=>{
-        console.log("use effect running")
         window.addEventListener("offline",()=>{
             setOnlineStatus(false);
         })
         window.addEventListener("online",()=>{
-            console.log("Set Online")
             setOnlineStatus(true);
         })
     },[])
