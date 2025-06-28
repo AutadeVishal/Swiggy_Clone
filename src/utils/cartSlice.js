@@ -4,7 +4,8 @@ import { createSlice } from "@reduxjs/toolkit"
 const cartSlice=createSlice({
 name: "cart",
 initialState :{
-    items:["burger","pizza"],
+    items:[],
+
 },
 reducers:{
   /* Reducer Function*/ 
@@ -12,10 +13,13 @@ reducers:{
    addItem:(state,action)=>{
         state.items.push(action.payload);
     },
-    removeItem:(state,action)=>{
-        state.items.pop(); 
+    removeItem: (state, action) => {
+    const idx = state.items.findIndex(item => item.name === action.payload);
+    if (idx !== -1) {
+        state.items.splice(idx, 1);
     }
-    ,
+},
+    
     clearCart:(state)=>{
         state.items.length=0;
     }

@@ -1,9 +1,5 @@
 import ItemList from "./ItemList";
-import { useState } from "react";
-const RestaurantCategory=(props)=>{
-const category=props.category;
-const showItems=props.showItems;
-const setShowIndex=props.setShowIndex;
+const RestaurantCategory=({category,showItems,setShowIndex})=>{
 const handleClick=()=>{
     setShowIndex();
 }
@@ -20,9 +16,7 @@ return (
    {/*accordian body*/}
    {showItems && (
   <div className="w-6/12 mx-auto">
-    {category.items.map((item) => (
-      <ItemList key={item.id} data={item} />
-    ))}
+      <ItemList  key={category.id} itemList={category.items} />
   </div>
 )}
     </div>

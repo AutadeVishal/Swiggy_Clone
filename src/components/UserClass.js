@@ -10,7 +10,7 @@ class UserClass extends React.Component {
     componentDidMount(){
         //after rednering component
         //used to do api call after dummy render
-        //used if(this.rpops!=prev.pop || etc) for dependancy array which we used in useEffect
+        //used if(this.props!=prev.prop || etc) for dependancy array which we used in useEffect
 
         //useEffect in functional componets
     }
@@ -22,8 +22,8 @@ class UserClass extends React.Component {
         const name = this.props.name;
         return (
 
-            <div className="user-card">
-                <button onClick={() => {
+            <div >
+                <button className="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-lg shadow transition-colors duration-200" onClick={() => {
                     //Never Update directly like this.state.count++;
                     this.setState({
                         count: this.state.count+1

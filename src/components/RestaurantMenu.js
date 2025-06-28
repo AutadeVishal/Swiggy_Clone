@@ -7,7 +7,7 @@ const RestaurantMenu = () => {
   const { resId } = useParams();
 const [showIndex,setShowIndex]=useState(null);
 
-  const resInfo=useRestaurantMenu(resId);
+  const resInfo=useRestaurantMenu(resId)
   if (!resInfo) {
     return <div className="menu"><h2>Loading menu...</h2></div>;
   }

@@ -6,18 +6,27 @@ const useListofRestaurants = () => {
   const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
+    
+    searchByText()
+  },
+    [searchText]);
+
+  useEffect(() => {
+    
     fetchData();
   }, []);
+
+  
 
   const fetchData = async () => {
     const data = await fetch("http://localhost:5000/api/restaurants");
     const json = await data.json();
     setListofRestaurants(json);
-    setFilteredRestaurants(json); // Initialize with full list
+    setFilteredRestaurants(json); // Initialize with full list to show all when empty
   };
 
   const filterTopRated = () => {
-    const topRated = listofRestaurants.filter((res) => res.rating > 4.5);
+    const topRated = listofRestaurants.filter((res) => (res.rating >= 4.5 && res.name.toLowerCase().includes(searchText.toLowerCase())));
     setFilteredRestaurants(topRated);
   };
 
@@ -33,8 +42,7 @@ const useListofRestaurants = () => {
     filteredRestaurants,
     searchText,
     setSearchText,
-    filterTopRated,
-    searchByText,
+    filterTopRated
   };
 };
 
